@@ -2,6 +2,7 @@ import streamlit as st
 import tensorflow as tf
 from PIL import Image
 import numpy as np
+import os
 
 # 1. Page Configuration
 st.set_page_config(page_title="Crack Detection AI", page_icon="🏗️")
@@ -9,7 +10,8 @@ st.set_page_config(page_title="Crack Detection AI", page_icon="🏗️")
 # 2. Model Load Karein
 @st.cache_resource
 def load_my_model():
-    return tf.keras.models.load_model('my_cnn_model.h5')
+    model_path = os.path.join(os.path.dirname(__file__), 'my_cnn_model.h5')
+    return tf.keras.models.load_model(model_path)
 
 model = load_my_model()
 
